@@ -27,6 +27,7 @@
             margin: 20px auto;
             padding: 0 20px;
             flex: 1;
+            position: relative;
         }
         nav ul {
             list-style-type: none;
@@ -48,12 +49,14 @@
             text-align: center;
             margin-bottom: 20px;
         }
-        .flight {
+        .flight, .about-airasia {
             background-color: #ffffff;
             padding: 20px;
             margin-bottom: 20px;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .flight {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -85,12 +88,27 @@
             margin: 0;
             font-size: 14px;
         }
-        .about-airasia {
+        .side-box {
+            position: absolute;
+            width: 200px;
             background-color: #ffffff;
-            padding: 20px;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin-top: 20px;
+            padding: 20px;
+            top: 20px;
+        }
+        .side-box.left {
+            left: 20px;
+        }
+        .side-box.right {
+            right: 20px;
+        }
+        .side-box img {
+            width: 100%;
+            border-radius: 5px;
+        }
+        .about-airasia h2 {
+            margin-top: 0;
         }
     </style>
 </head>
@@ -109,6 +127,15 @@
     </header>
 
     <main>
+        <div class="side-box left">
+            <img src="left-image.jpg" alt="Left Image">
+            <p>Left side content</p>
+        </div>
+        <div class="side-box right">
+            <img src="right-image.jpg" alt="Right Image">
+            <p>Right side content</p>
+        </div>
+
         <section id="flights">
             <div class="container">
                 <h2>Available Flights</h2>
