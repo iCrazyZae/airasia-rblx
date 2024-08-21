@@ -6,6 +6,106 @@
     <title>Book Your Flight</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        header, footer {
+            background-color: #d32f2f;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+        }
+        h2 {
+            color: #d32f2f;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .flight {
+            background-color: #ffffff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .flight-details {
+            max-width: 70%;
+            text-align: center;
+        }
+        .flight-details p {
+            margin: 5px 0;
+            font-size: 16px;
+        }
+        .button {
+            padding: 10px 20px;
+            background-color: #d32f2f;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 14px;
+            text-align: center;
+            text-decoration: none;
+        }
+        .button:hover {
+            background-color: #b71c1c;
+        }
+        footer p {
+            margin: 0;
+            font-size: 14px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        label {
+            margin: 10px 0;
+            font-weight: 700;
+        }
+        input[type="text"], input[type="submit"] {
+            padding: 10px;
+            font-size: 16px;
+            margin: 5px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .meal-selection {
+            margin: 20px 0;
+        }
+        .meal-selection label {
+            display: block;
+            margin: 5px 0;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -24,15 +124,17 @@
     <main>
         <section id="booking">
             <div class="container">
-                <h2 id="bookingHeading">Book Your Flight</h2>
-                <p id="flightInfo">
-                    <strong>Flight Number:</strong> <span id="flightNumber"></span><br>
-                    <strong>Date:</strong> <span id="flightDate"></span><br>
-                    <strong>Time:</strong> <span id="flightTime"></span><br>
-                    <strong>Route:</strong> <span id="flightRoute"></span>
-                </p>
+                <h2>Book Your Flight</h2>
+                <div class="flight">
+                    <div class="flight-details">
+                        <p><strong>Flight Number:</strong> <span id="flightNumber"></span></p>
+                        <p><strong>Date:</strong> <span id="flightDate"></span></p>
+                        <p><strong>Time:</strong> <span id="flightTime"></span></p>
+                        <p><strong>Route:</strong> <span id="flightRoute"></span></p>
+                    </div>
+                </div>
                 <form id="bookingForm">
-                    <label for="name">Name:</label>
+                    <label for="name">Roblox Name:</label>
                     <input type="text" id="name" name="name" required>
                     
                     <div class="meal-selection">
@@ -58,33 +160,52 @@
     </footer>
 
     <script>
+        const flightData = {
+            "6285": {
+                date: "23 August 2024",
+                time: "19:00",
+                route: "MKZ - PEN"
+            },
+            "6231": {
+                date: "25 August 2024",
+                time: "14:30",
+                route: "KUA - KUL"
+            }
+        };
+
         document.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
             const flightNumber = urlParams.get('flight');
-            const flightDate = urlParams.get('date');
-            const flightTime = urlParams.get('time');
-            const flightRoute = urlParams.get('route');
-            
-            if (flightNumber && flightDate && flightTime && flightRoute) {
+
+            if (flightNumber && flightData[flightNumber]) {
+                const flightInfo = flightData[flightNumber];
                 document.getElementById('flightNumber').textContent = flightNumber;
-                document.getElementById('flightDate').textContent = flightDate;
-                document.getElementById('flightTime').textContent = flightTime;
-                document.getElementById('flightRoute').textContent = flightRoute;
-                document.getElementById('bookingHeading').textContent = `Book Your Flight - ${flightNumber}`;
+                document.getElementById('flightDate').textContent = flightInfo.date;
+                document.getElementById('flightTime').textContent = flightInfo.time;
+                document.getElementById('flightRoute').textContent = flightInfo.route;
+            } else {
+                document.querySelector('.flight-details').innerHTML = '<p>Invalid flight number or no flight selected.</p>';
             }
 
             document.getElementById('bookingForm').addEventListener('submit', (event) => {
                 event.preventDefault();
-                
                 const name = document.getElementById('name').value;
                 const meal = document.querySelector('input[name="meal"]:checked')?.value || 'No meal selected';
-                const message = `**Booking Log**\nName: ${name}\nFlight Number: ${flightNumber}\nDate: ${flightDate}\nTime: ${flightTime}\nRoute: ${flightRoute}\nMeal: ${meal}`;
+                const message = `**Booking Log**\nName: ${name}\nFlight Number: ${flightNumber}\nMeal: ${meal}`;
 
-                // Example: Log booking details to the console (replace with actual handling)
-                console.log(message);
-
-                alert('Flight booked successfully!');
-                window.location.href = 'index.html';  // Redirect to home page or another page
+                fetch('https://discord.com/api/webhooks/1275798666866589776/iVKKfYk_zA3kHZh5_U0d9aPWovUHidHD62DI5AnndZK3hyCpXvwtClQD5CG_5qNOPZOO', {
+                    method: 'POST',
+                    body: JSON.stringify({ content: message }),
+                    headers: { 'Content-Type': 'application/json' }
+                })
+                .then(response => response.json())
+                .then(() => {
+                    alert('Flight booked successfully and logged!');
+                    window.location.href = 'index.html';  // Redirect to home page or another page
+                })
+                .catch(error => {
+                    alert('Successfully Booked Flight.');
+                });
             });
         });
     </script>
