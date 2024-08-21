@@ -80,3 +80,28 @@ footer p {
     margin: 0;
     font-size: 14px;
 }
+
+/* Ensure the body and html take up the full height of the viewport */
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+/* Make the body a flex container to push the footer to the bottom */
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+/* The main content should take up the available space */
+main {
+    flex: 1;
+}
+
+/* Styling for the footer */
+footer {
+    background-color: #d32f2f;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
