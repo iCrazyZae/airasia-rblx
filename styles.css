@@ -13,6 +13,11 @@ header, footer {
     padding: 10px 0;
     text-align: center;
 }
+header .logo {
+    max-width: 150px; /* Adjust the width as needed */
+    height: auto; /* Maintain aspect ratio */
+}
+}
 .container {
     max-width: 800px;
     margin: 20px auto;
