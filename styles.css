@@ -54,6 +54,7 @@ nav ul li a {
     width: 100%;
     max-width: 600px;
     text-align: center;
+    position: relative; /* Add this to position children absolutely */
 }
 
 .flight-item p {
@@ -62,6 +63,9 @@ nav ul li a {
 
 .flight-duration {
     font-weight: 700;
+    position: absolute;
+    right: 20px; /* Adjust as needed */
+    top: 20px;   /* Adjust as needed */
 }
 
 .button {
@@ -84,7 +88,7 @@ footer {
     background-color: #f8f9fa;
     border-top: 1px solid #e1e1e1;
     padding: 10px 0;
-    position: relative;
+    position: fixed;
     bottom: 0;
     width: 100%;
     text-align: center;
