@@ -25,8 +25,22 @@
             <h2>Book Your Flight</h2>
             <form id="bookingForm">
                 <p id="flightInfo"></p>
+
                 <label for="name">Your Name:</label>
                 <input type="text" id="name" name="name" required>
+
+                <button type="button" id="prebookMealsButton">Prebook Meals</button>
+                <div id="mealOptions" style="display: none;">
+                    <label>
+                        <input type="radio" name="meal" value="Sandwich" required>
+                        Sandwich
+                    </label>
+                    <label>
+                        <input type="radio" name="meal" value="Nasi Lemak" required>
+                        Nasi Lemak
+                    </label>
+                </div>
+
                 <input type="submit" value="Book Flight">
             </form>
         </div>
@@ -45,14 +59,22 @@
             const urlParams = new URLSearchParams(window.location.search);
             const flightNumber = urlParams.get('flight');
             const flightInfo = document.getElementById('flightInfo');
+            const prebookMealsButton = document.getElementById('prebookMealsButton');
+            const mealOptions = document.getElementById('mealOptions');
 
             if (flightNumber) {
                 flightInfo.textContent = `Flight Number: ${flightNumber}`;
+
+                prebookMealsButton.addEventListener('click', () => {
+                    mealOptions.style.display = mealOptions.style.display === 'none' ? 'block' : 'none';
+                });
+
                 document.getElementById('bookingForm').addEventListener('submit', (event) => {
                     event.preventDefault();
-                    
+
                     const name = document.getElementById('name').value;
-                    const message = `**Booking Log**\nName: ${name}\nFlight Number: ${flightNumber}`;
+                    const selectedMeal = document.querySelector('input[name="meal"]:checked') ? document.querySelector('input[name="meal"]:checked').value : 'No Meal Selected';
+                    const message = `**Booking Log**\nName: ${name}\nFlight Number: ${flightNumber}\nMeal: ${selectedMeal}`;
 
                     fetch(discordWebhookUrl, {
                         method: 'POST',
