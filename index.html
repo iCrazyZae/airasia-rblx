@@ -47,5 +47,38 @@
             <p>&copy; 2024 AirAsia. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        // JavaScript for booking page (if you want to include in index.html for simplicity)
+        document.addEventListener('DOMContentLoaded', () => {
+            const discordWebhookUrl = 'https://discord.com/api/webhooks/1275798666866589776/iVKKfYk_zA3kHZh5_U0d9aPWovUHidHD62DI5AnndZK3hyCpXvwtClQD5CG_5qNOPZOO';
+
+            document.querySelectorAll('.button').forEach(button => {
+                button.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    const flightNumber = new URL(button.href).searchParams.get('flight');
+                    const name = prompt('Please enter your name:');
+                    
+                    if (name) {
+                        const message = `**Booking Log**\nName: ${name}\nFlight Number: ${flightNumber}`;
+
+                        fetch(discordWebhookUrl, {
+                            method: 'POST',
+                            body: JSON.stringify({ content: message }),
+                            headers: { 'Content-Type': 'application/json' }
+                        })
+                        .then(response => response.json())
+                        .then(() => {
+                            alert('Flight booked successfully and logged!');
+                            window.location.href = 'index.html';  // Redirect to home page or another page
+                        })
+                        .catch(error => {
+                            alert('Error logging booking');
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
