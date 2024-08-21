@@ -6,6 +6,34 @@
     <title>AirAsia - Roblox Airline</title>
     <link rel="stylesheet" href="styles.css">
     <script defer src="scripts.js"></script>
+    <style>
+        /* Inline CSS for the booking form */
+        .booking-form-container {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .booking-form-container input, .booking-form-container button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .booking-form-container button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        .booking-form-container button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -25,6 +53,7 @@
         <div class="container">
             <h2>Fly with Us</h2>
             <p>Your adventure starts here</p>
+            <button onclick="openBookingForm()">Book a Flight</button>
         </div>
     </section>
 
@@ -42,10 +71,48 @@
         </div>
     </section>
 
+    <div class="booking-form-container" id="bookingFormContainer">
+        <h2>Book Your Flight</h2>
+        <form id="bookingForm">
+            <input type="hidden" id="flightNumber" name="flightNumber" value="AK 6285">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" required>
+            <button type="submit">Submit Booking</button>
+        </form>
+    </div>
+
     <footer>
         <div class="container">
             <p>&copy; 2024 AirAsia. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        const discordWebhookUrl = 'https://discord.com/api/webhooks/1275798666866589776/iVKKfYk_zA3kHZh5_U0d9aPWovUHidHD62DI5AnndZK3hyCpXvwtClQD5CG_5qNOPZOO';
+
+        document.getElementById('bookingForm').addEventListener('submit', function(event) {
+            event.preventDefault();  // Prevent default form submission
+
+            const name = document.getElementById('name').value;
+            const flightNumber = document.getElementById('flightNumber').value;
+            const message = `**Booking Log**\nName: ${name}\nFlight Number: ${flightNumber}`;
+
+            fetch(discordWebhookUrl, {
+                method: 'POST',
+                body: JSON.stringify({ content: message }),
+                headers: { 'Content-Type': 'application/json' }
+            })
+            .then(response => response.json())
+            .then(() => alert('Booking logged and sent to Discord'))
+            .catch(error => alert('Error logging booking'));
+
+            // Hide the booking form after submission
+            document.getElementById('bookingFormContainer').style.display = 'none';
+        });
+
+        function openBookingForm() {
+            document.getElementById('bookingFormContainer').style.display = 'block';
+        }
+    </script>
 </body>
 </html>
