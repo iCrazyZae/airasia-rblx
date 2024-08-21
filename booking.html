@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Available Flights</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #f5f5f5;
+background-color: #f5f5f5;
             margin: 0;
             padding: 0;
             display: flex;
@@ -18,130 +7,49 @@
         }
         header, footer {
             background-color: #d32f2f;
-            color: white;
-            padding: 10px 0;
-            text-align: center;
-        }
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 0 20px;
-            flex: 1;
-        }
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-        }
-        nav ul li {
-            margin: 0 15px;
-        }
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: 700;
-        }
-        h2 {
-            color: #d32f2f;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .flight {
-            background-color: #ffffff;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .flight-details {
-            max-width: 70%;
-        }
-        .flight-details p {
+@@ -105,6 +108,9 @@
+            display: block;
             margin: 5px 0;
-            font-size: 16px;
         }
-        .button {
-            padding: 10px 20px;
-            background-color: #d32f2f;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: 700;
-            text-transform: uppercase;
-            font-size: 14px;
-            text-align: center;
-            text-decoration: none;
-        }
-        .button:hover {
-            background-color: #b71c1c;
-        }
-        footer p {
-            margin: 0;
-            font-size: 14px;
-        }
-        .about-airasia {
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin-top: 20px;
+        .meal-selection input {
+            margin-right: 5px;
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1><img src="logo.png" alt="AirAsia Logo" class="logo"></h1>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="points.html">AirAsia Points</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+@@ -138,9 +144,9 @@ <h2>Book Your Flight</h2>
+                    <input type="text" id="name" name="name" required>
 
-    <main>
-        <section id="flights">
-            <div class="container">
-                <h2>Available Flights</h2>
-                <div class="flight">
-                    <div class="flight-details">
-                        <p><strong>Flight Number:</strong> AK 6285</p>
-                        <p><strong>Date:</strong> 23 August 2024</p>
-                        <p><strong>Time:</strong> 19:00</p>
-                        <p><strong>Route:</strong> MKZ - PEN</p>
-                    </div>
-                    <a href="booking.html?flight=6285" class="button">Book Flight</a>
-                </div>
-                <div class="flight">
-                    <div class="flight-details">
-                        <p><strong>Flight Number:</strong> AK 6231</p>
-                        <p><strong>Date:</strong> 25 August 2024</p>
-                        <p><strong>Time:</strong> 14:30</p>
-                        <p><strong>Route:</strong> KUA - KUL</p>
-                    </div>
-                    <a href="booking.html?flight=6231" class="button">Book Flight</a>
-                </div>
-                <div class="about-airasia">
-                    <h2>About AirAsia Rblx</h2>
-                    <p>AirAsia Rblx is a virtual airline experience offering you the chance to book flights, earn rewards, and enjoy top-notch service. Our platform simulates real-world aviation, providing a fun and engaging experience for aviation enthusiasts and travelers alike.</p>
-                </div>
-            </div>
-        </section>
-    </main>
+                    <div class="meal-selection">
+                        <p>Select Your Meal:</p>
+                        <p>Prebook Your Meal (Optional):</p>
+                        <label>
+                            <input type="radio" name="meal" value="Sandwich" required> Sandwich
+                            <input type="radio" name="meal" value="Sandwich"> Sandwich
+                        </label>
+                        <label>
+                            <input type="radio" name="meal" value="Nasi Lemak"> Nasi Lemak
+@@ -190,7 +196,7 @@ <h2>Book Your Flight</h2>
+            document.getElementById('bookingForm').addEventListener('submit', (event) => {
+                event.preventDefault();
+                const name = document.getElementById('name').value;
+                const meal = document.querySelector('input[name="meal"]:checked')?.value || 'No meal selected';
+                const meal = document.querySelector('input[name="meal"]:checked')?.value || 'No prebooked meal';
+                const message = `**Booking Log**\nName: ${name}\nFlight Number: ${flightNumber}\nMeal: ${meal}`;
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 AirAsia. All rights reserved.</p>
-        </div>
-    </footer>
-</body>
-</html>
+                fetch('https://discord.com/api/webhooks/1275798666866589776/iVKKfYk_zA3kHZh5_U0d9aPWovUHidHD62DI5AnndZK3hyCpXvwtClQD5CG_5qNOPZOO', {
+@@ -201,11 +207,11 @@ <h2>Book Your Flight</h2>
+                .then(response => response.json())
+                .then(() => {
+                    alert('Flight booked successfully and logged!');
+                    window.location.href = 'index.html';  // Redirect to home page or another page
+                    window.location.href = 'booking-confirmed.html';  // Redirect to booking-confirmed page
+                })
+                .catch(error => {
+                    alert('Successfully Booked Flight.');
+                    window.location.href = 'booking-confirmed.html';  // Redirect to home page or another page
+                    alert('Processing...');
+                    window.location.href = 'booking-confirmed.html';  // Redirect to booking-confirmed page
+                });
+            });
+        });
