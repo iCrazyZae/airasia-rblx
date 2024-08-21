@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AirAsia - Available Flights</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
 </head>
 <body>
     <header>
@@ -27,16 +26,20 @@
             <div class="flight-list">
                 <div class="flight-item">
                     <p>Flight Number: AK 6285</p>
-                    <p>Date: 24 August 2024</p>
+                    <p>Origin: MKZ</p>
+                    <p>Destination: PEN</p>
+                    <p>Departure Date: 24 August 2024</p>
                     <p>Time: 17:30</p>
-                    <p>Route: MKZ > PEN</p>
+                    <p>Cabin Class: Economy</p>
                     <a href="booking.html?flight=AK%206285" class="button">Book Flight</a>
                 </div>
                 <div class="flight-item">
                     <p>Flight Number: AK 6231</p>
-                    <p>Date: 25 August 2024</p>
+                    <p>Origin: KUA</p>
+                    <p>Destination: KUL</p>
+                    <p>Departure Date: 25 August 2024</p>
                     <p>Time: 14:30</p>
-                    <p>Route: KUA > KUL</p>
+                    <p>Cabin Class: Economy</p>
                     <a href="booking.html?flight=AK%206231" class="button">Book Flight</a>
                 </div>
             </div>
@@ -69,11 +72,11 @@
                         })
                         .then(response => response.json())
                         .then(() => {
-                            alert('Successfully Booked Flight!');
+                            alert('Successfully Booked Flight.');
                             window.location.href = 'index.html';  // Redirect to home page or another page
                         })
                         .catch(error => {
-                            alert('Successfully Booked Flight.');
+                            alert('Error logging booking');
                         });
                     }
                 });
