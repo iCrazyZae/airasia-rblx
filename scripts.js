@@ -1,51 +1,25 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const flightNumbers = JSON.parse(localStorage.getItem('flightNumbers')) || ['AA123', 'AA456', 'AA789'];
-    const flightSelect = document.getElementById('flightNumber');
+    // Initial flight data
+    const flightData = [
+        { number: 'AK 6285', date: '24 August 2024', time: '17:30', route: 'MKZ > PEN' },
+        { number: 'AK 6231', date: '25 August 2024', time: '14:30', route: 'KUA > KUL' }
+    ];
+
+    // Get flightList element
     const flightList = document.getElementById('flightList');
-    const addFlightButton = document.getElementById('addFlightButton');
-    const newFlightNumberInput = document.getElementById('newFlightNumber');
 
-    // Load flight numbers into the dropdown
-    updateFlightDropdown();
-
-    // Display flight numbers in the list
+    // Display available flights
     updateFlightList();
-
-    // Handle form submission
-    document.getElementById('bookingForm').addEventListener('submit', (event) => {
-        event.preventDefault();
-        alert('Flight booked successfully!');
-    });
-
-    // Handle adding a new flight number
-    addFlightButton.addEventListener('click', () => {
-        const newFlightNumber = newFlightNumberInput.value.trim();
-        if (newFlightNumber && !flightNumbers.includes(newFlightNumber)) {
-            flightNumbers.push(newFlightNumber);
-            localStorage.setItem('flightNumbers', JSON.stringify(flightNumbers));
-            updateFlightDropdown();
-            updateFlightList();
-            newFlightNumberInput.value = '';
-        }
-    });
-
-    // Update flight number dropdown
-    function updateFlightDropdown() {
-        flightSelect.innerHTML = '';
-        flightNumbers.forEach(flight => {
-            const option = document.createElement('option');
-            option.value = flight;
-            option.textContent = flight;
-            flightSelect.appendChild(option);
-        });
-    }
 
     // Update flight numbers list
     function updateFlightList() {
         flightList.innerHTML = '';
-        flightNumbers.forEach(flight => {
+        flightData.forEach(flight => {
             const listItem = document.createElement('li');
-            listItem.textContent = flight;
+            listItem.innerHTML = `<strong>${flight.number}</strong><br>
+                                  Date: ${flight.date}<br>
+                                  Time: ${flight.time}<br>
+                                  Route: ${flight.route}`;
             flightList.appendChild(listItem);
         });
     }
