@@ -1,31 +1,43 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+/* General Styles */
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+}
 
 body {
-    font-family: 'Montserrat', sans-serif;
-    background-color: #f3f3f3;
-    color: #333;
-    margin: 0;
-    padding: 0;
+    display: flex;
+    flex-direction: column;
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
+/* Header Styles */
 header {
-    background-color: #D71920;
-    padding: 20px 0;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
     text-align: center;
 }
 
-header img.logo {
-    max-width: 150px;
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
+header h1 {
+    margin: 0;
+}
+
+header .logo {
+    height: 50px;
+}
+
+/* Navigation Styles */
 nav ul {
-    list-style-type: none;
+    list-style: none;
+    margin: 0;
     padding: 0;
 }
 
@@ -35,89 +47,76 @@ nav ul li {
 }
 
 nav ul li a {
-    color: white;
+    color: #fff;
     text-decoration: none;
     font-weight: bold;
 }
 
-section h2 {
-    color: #D71920;
-    margin-bottom: 20px;
+/* Main Content Styles */
+section {
+    padding: 20px;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+section .container {
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .flight-list {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 20px;
-    flex-wrap: wrap;
 }
 
 .flight-item {
-    background-color: white;
+    background-color: #fff;
     border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     padding: 20px;
-    width: calc(50% - 20px);
-    position: relative;
+    width: 300px;
+    text-align: center;
 }
 
 .flight-item p {
-    margin: 5px 0;
+    margin: 10px 0;
 }
 
 .flight-duration {
-    position: absolute;
-    top: 20px;
-    right: 20px;
     font-weight: bold;
 }
 
 .button {
     display: inline-block;
-    padding: 10px 20px;
-    background-color: #D71920;
-    color: white;
+    background-color: #007BFF;
+    color: #fff;
     text-decoration: none;
-    border-radius: 5px;
-    margin-top: 10px;
-}
-
-footer {
-    background-color: #D71920;
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-    position: relative;
-    width: 100%;
-    bottom: 0;
-}
-
-/* General button styling */
-.button, .meal-button {
-    background-color: #ff0000; /* Adjust to your preferred color */
-    color: #ffffff;
-    border: none;
     padding: 10px 20px;
     border-radius: 5px;
-    cursor: pointer;
-    font-family: 'Montserrat', sans-serif; /* Ensure font matches */
     font-size: 16px;
-    text-transform: uppercase;
+    transition: background-color 0.3s ease;
 }
 
-.button:hover, .meal-button:hover {
-    background-color: #cc0000; /* Adjust to your preferred hover color */
+.button:hover {
+    background-color: #0056b3;
 }
 
-/* Flight section styling */
-#booking {
-    margin: 20px;
+/* Footer Styles */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
 }
 
-.prebook-meals {
-    margin: 10px 0;
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
 }
-
-.meal-options label {
-    display: block;
-    margin-top: 5px;
-}
-
