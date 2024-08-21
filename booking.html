@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Flight</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><img src="logo.png" alt="AirAsia Logo" class="logo"></h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="miles.html">Miles Program</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="booking">
+        <div class="container">
+            <h2>Book Your Flight</h2>
+            <form id="bookingForm">
+                <p id="flightInfo"></p>
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" required>
+                <input type="submit" value="Book Flight">
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 AirAsia. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const discordWebhookUrl = 'https://discord.com/api/webhooks/1275798666866589776/iVKKfYk_zA3kHZh5_U0d9aPWovUHidHD62DI5AnndZK3hyCpXvwtClQD5CG_5qNOPZOO';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const flightNumber = urlParams.get('flight');
+            const flightInfo = document.getElementById('flightInfo');
+
+            if (flightNumber) {
+                flightInfo.textContent = `Flight Number: ${flightNumber}`;
+                document.getElementById('bookingForm').addEventListener('submit', (event) => {
+                    event.preventDefault();
+                    
+                    const name = document.getElementById('name').value;
+                    const message = `**Booking Log**\nName: ${name}\nFlight Number: ${flightNumber}`;
+
+                    fetch(discordWebhookUrl, {
+                        method: 'POST',
+                        body: JSON.stringify({ content: message }),
+                        headers: { 'Content-Type': 'application/json' }
+                    })
+                    .then(response => response.json())
+                    .then(() => {
+                        alert('Flight booked successfully and logged!');
+                        window.location.href = 'index.html';  // Redirect to home page or another page
+                    })
+                    .catch(error => {
+                        alert('Error logging booking');
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>
