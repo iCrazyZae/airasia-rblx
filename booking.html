@@ -6,6 +6,80 @@
     <title>Book Your Flight</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        header, footer {
+            background-color: #d32f2f;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        h2 {
+            color: #d32f2f;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+        .prebook-meals, .submit-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .meal-button, .button {
+            padding: 10px 20px;
+            background-color: #d32f2f;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 14px;
+            text-align: center;
+        }
+        .meal-button:hover, .button:hover {
+            background-color: #b71c1c;
+        }
+        .meal-options {
+            margin-top: 10px;
+        }
+        .meal-options label {
+            margin-right: 10px;
+        }
+        .footer p {
+            margin: 0;
+            font-size: 14px;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -31,7 +105,7 @@
                     <input type="text" id="name" name="name" required>
                     
                     <div class="prebook-meals">
-                        <button type="button" class="meal-button">PREBOOK MEALS</button>
+                        <button type="button" class="meal-button">Prebook Meals</button>
                         <div class="meal-options" style="display: none;">
                             <label>
                                 <input type="radio" name="meal" value="sandwich"> Sandwich
@@ -42,7 +116,9 @@
                         </div>
                     </div>
 
-                    <input type="submit" value="BOOK NOW" class="button" id="bookButton">
+                    <div class="submit-section">
+                        <input type="submit" value="Book Now" class="button" id="bookButton">
+                    </div>
                 </form>
             </div>
         </section>
