@@ -54,7 +54,7 @@ nav ul li a {
     width: 100%;
     max-width: 600px;
     text-align: center;
-    position: relative; /* Add this to position children absolutely */
+    position: relative;
 }
 
 .flight-item p {
@@ -64,8 +64,8 @@ nav ul li a {
 .flight-duration {
     font-weight: 700;
     position: absolute;
-    right: 20px; /* Adjust as needed */
-    top: 20px;   /* Adjust as needed */
+    right: 20px;
+    top: 20px;
 }
 
 .button {
@@ -73,17 +73,17 @@ nav ul li a {
     padding: 10px 20px;
     font-size: 16px;
     color: #fff;
-    background-color: #ff0000; /* Red button color */
+    background-color: #ff0000;
     border: none;
     border-radius: 4px;
     text-decoration: none;
     cursor: pointer;
     text-align: center;
-    margin: 10px; /* Add margin if needed */
+    margin: 10px;
 }
 
 .button:hover {
-    background-color: #cc0000; /* Darker red on hover */
+    background-color: #cc0000;
 }
 
 .prebook-meals .meal-button {
@@ -91,17 +91,17 @@ nav ul li a {
     padding: 10px 20px;
     font-size: 16px;
     color: #fff;
-    background-color: #ff0000; /* Red button color, same as .button */
+    background-color: #ff0000;
     border: none;
     border-radius: 4px;
     text-decoration: none;
     cursor: pointer;
     text-align: center;
-    margin: 10px; /* Add margin if needed */
+    margin: 10px;
 }
 
 .prebook-meals .meal-button:hover {
-    background-color: #cc0000; /* Darker red on hover */
+    background-color: #cc0000;
 }
 
 footer {
@@ -120,49 +120,6 @@ footer {
     margin: 0 auto;
 }
 
-/* Apply Montserrat font to the entire body */
-body {
-    font-family: 'Montserrat', sans-serif;
-}
-
-/* Style for buttons */
-.button, .meal-button {
-    background-color: #ff0000; /* Red background for buttons */
-    color: #ffffff; /* White text color */
-    border: none;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 4px;
-}
-
-/* Additional button hover effects */
-.button:hover, .meal-button:hover {
-    background-color: #cc0000; /* Darker red when hovering */
-}
-
-/* Style for input elements */
-input[type="text"], input[type="submit"] {
-    font-family: 'Montserrat', sans-serif;
-}
-
-/* Style for form labels */
-label {
-    font-family: 'Montserrat', sans-serif;
-}
-
-/* Ensure body and html take full height */
-html, body {
-    height: 100%;
-    margin: 0;
-    font-family: 'Montserrat', sans-serif;
-}
-
-/* Use flexbox to make sure the footer sticks to the bottom */
 body {
     display: flex;
     flex-direction: column;
@@ -173,7 +130,6 @@ main {
     flex: 1;
 }
 
-/* Footer styles */
 footer {
     background-color: #f1f1f1;
     padding: 10px 0;
@@ -181,7 +137,6 @@ footer {
     border-top: 1px solid #e1e1e1;
 }
 
-/* Ensure all containers inside the footer are aligned centrally */
 footer .container {
     display: flex;
     justify-content: center;
@@ -189,10 +144,9 @@ footer .container {
     padding: 0 20px;
 }
 
-/* Button styling */
 .button, .meal-button {
-    background-color: #ff0000; /* Red background for buttons */
-    color: #ffffff; /* White text color */
+    background-color: #ff0000;
+    color: #ffffff;
     border: none;
     padding: 10px 20px;
     text-align: center;
@@ -204,14 +158,25 @@ footer .container {
     border-radius: 4px;
 }
 
-/* Button hover effects */
 .button:hover, .meal-button:hover {
-    background-color: #cc0000; /* Darker red when hovering */
+    background-color: #cc0000;
 }
 
-/* Style for disabled button */
 #bookButton:disabled {
-    background-color: #cccccc; /* Grey background for disabled state */
-    color: #666666; /* Darker text color for disabled state */
+    background-color: #cccccc;
+    color: #666666;
     cursor: not-allowed;
+}
+
+/* Shorter text box for Roblox name */
+input[type="text"] {
+    width: 50%; /* Adjusted width for the text box */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+label {
+    font-family: 'Montserrat', sans-serif;
 }
