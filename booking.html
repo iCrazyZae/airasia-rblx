@@ -24,7 +24,6 @@
     <main>
         <section id="booking">
             <div class="container">
-                <!-- Dynamic heading for flight number -->
                 <h2 id="bookingHeading">Book Your Flight</h2>
                 <p id="flightInfo">Flight Number: <span id="flightNumber"></span></p>
                 <form id="bookingForm">
@@ -61,13 +60,10 @@
             const flightNumber = urlParams.get('flight');
             
             if (flightNumber) {
-                // Update flight number in the paragraph
                 document.getElementById('flightNumber').textContent = flightNumber;
-                // Update heading with flight number
                 document.getElementById('bookingHeading').textContent = `Book Your Flight - ${flightNumber}`;
             }
 
-            // Handle form submission
             document.getElementById('bookingForm').addEventListener('submit', (event) => {
                 event.preventDefault();
                 
