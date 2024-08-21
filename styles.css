@@ -119,3 +119,38 @@ footer {
     max-width: 1200px;
     margin: 0 auto;
 }
+
+/* Apply Montserrat font to the entire body */
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Style for buttons */
+.button, .meal-button {
+    background-color: #ff0000; /* Red background for buttons */
+    color: #ffffff; /* White text color */
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+/* Additional button hover effects */
+.button:hover, .meal-button:hover {
+    background-color: #cc0000; /* Darker red when hovering */
+}
+
+/* Style for input elements */
+input[type="text"], input[type="submit"] {
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Style for form labels */
+label {
+    font-family: 'Montserrat', sans-serif;
+}
