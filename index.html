@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AirAsia - Available Flights</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
     <header>
         <div class="container">
@@ -27,27 +25,19 @@
             <h2>Available Flights</h2>
             <div class="flight-list">
                 <div class="flight-item">
-                    <div class="flight-info">
-                        <p>Flight Number: AK 6285</p>
-                        <p>Date: 24 August 2024</p>
-                        <p>Time: 17:30</p>
-                        <p>Route: MKZ > PEN</p>
-                    </div>
-                    <div class="flight-duration">
-                        <p>Duration: 1h 30m</p>
-                    </div>
+                    <p>Flight Number: AK 6285</p>
+                    <p>Date: 24 August 2024</p>
+                    <p>Time: 17:30</p>
+                    <p>Route: MKZ > PEN</p>
+                    <p class="flight-duration">Duration: 1h 30m</p>
                     <a href="booking.html?flight=AK%206285" class="button">Book Flight</a>
                 </div>
                 <div class="flight-item">
-                    <div class="flight-info">
-                        <p>Flight Number: AK 6231</p>
-                        <p>Date: 25 August 2024</p>
-                        <p>Time: 14:30</p>
-                        <p>Route: KUA > KUL</p>
-                    </div>
-                    <div class="flight-duration">
-                        <p>Duration: 1h 10m</p>
-                    </div>
+                    <p>Flight Number: AK 6231</p>
+                    <p>Date: 25 August 2024</p>
+                    <p>Time: 14:30</p>
+                    <p>Route: KUA > KUL</p>
+                    <p class="flight-duration">Duration: 1h 10m</p>
                     <a href="booking.html?flight=AK%206231" class="button">Book Flight</a>
                 </div>
             </div>
@@ -59,38 +49,5 @@
             <p>&copy; 2024 AirAsia. All rights reserved.</p>
         </div>
     </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const discordWebhookUrl = 'https://discord.com/api/webhooks/1275798666866589776/iVKKfYk_zA3kHZh5_U0d9aPWovUHidHD62DI5AnndZK3hyCpXvwtClQD5CG_5qNOPZOO';
-
-            document.querySelectorAll('.button').forEach(button => {
-                button.addEventListener('click', (event) => {
-                    event.preventDefault();
-                    const flightNumber = new URL(button.href).searchParams.get('flight');
-                    const name = prompt('Please enter your name:');
-                    
-                    if (name) {
-                        const message = `**Booking Log**\nName: ${name}\nFlight Number: ${flightNumber}`;
-
-                        fetch(discordWebhookUrl, {
-                            method: 'POST',
-                            body: JSON.stringify({ content: message }),
-                            headers: { 'Content-Type': 'application/json' }
-                        })
-                        .then(response => response.json())
-                        .then(() => {
-                            alert('Successfully Booked Flight.');
-                            window.location.href = 'index.html';  // Redirect to home page or another page
-                        })
-                        .catch(error => {
-                            alert('Error logging booking');
-                        });
-                    }
-                });
-            });
-        });
-    </script>
 </body>
-
 </html>
