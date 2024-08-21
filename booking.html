@@ -23,25 +23,24 @@
     <section id="booking">
         <div class="container">
             <h2>Book Your Flight</h2>
+            <p id="flightInfo"></p>
             <form id="bookingForm">
-                <p id="flightInfo"></p>
-
                 <label for="name">Your Name:</label>
                 <input type="text" id="name" name="name" required>
-
-                <div id="mealSelection">
-                    <h3>Prebook Your Meal:</h3>
-                    <label>
-                        <input type="radio" name="meal" value="Sandwich" required>
-                        Sandwich
-                    </label>
-                    <label>
-                        <input type="radio" name="meal" value="Nasi Lemak" required>
-                        Nasi Lemak
-                    </label>
+                
+                <div class="prebook-meals">
+                    <button type="button" class="meal-button">Prebook Meals</button>
+                    <div class="meal-options" style="display: none;">
+                        <label>
+                            <input type="radio" name="meal" value="sandwich"> Sandwich
+                        </label>
+                        <label>
+                            <input type="radio" name="meal" value="nasi lemak"> Nasi Lemak
+                        </label>
+                    </div>
                 </div>
 
-                <input type="submit" value="Book Flight">
+                <input type="submit" value="Book Flight" class="button">
             </form>
         </div>
     </section>
@@ -62,11 +61,12 @@
 
             if (flightNumber) {
                 flightInfo.textContent = `Flight Number: ${flightNumber}`;
+
                 document.getElementById('bookingForm').addEventListener('submit', (event) => {
                     event.preventDefault();
                     
                     const name = document.getElementById('name').value;
-                    const meal = document.querySelector('input[name="meal"]:checked').value;
+                    const meal = document.querySelector('input[name="meal"]:checked')?.value || 'No meal selected';
                     const message = `**Booking Log**\nName: ${name}\nFlight Number: ${flightNumber}\nMeal: ${meal}`;
 
                     fetch(discordWebhookUrl, {
@@ -82,6 +82,11 @@
                     .catch(error => {
                         alert('Successfully Booked Flight.');
                     });
+                });
+
+                document.querySelector('.meal-button').addEventListener('click', () => {
+                    const mealOptions = document.querySelector('.meal-options');
+                    mealOptions.style.display = mealOptions.style.display === 'none' ? 'block' : 'none';
                 });
             }
         });
