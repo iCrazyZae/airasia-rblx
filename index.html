@@ -1,7 +1,8 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AirAsia - Available Flights</title>
     <title>Available Flights</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
@@ -11,6 +12,9 @@
             background-color: #f5f5f5;
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
         header, footer {
             background-color: #d32f2f;
@@ -22,6 +26,7 @@
             max-width: 800px;
             margin: 20px auto;
             padding: 0 20px;
+            flex: 1;
         }
         nav ul {
             list-style-type: none;
@@ -84,18 +89,22 @@
 </head>
 <body>
     <header>
-<h1><img src="logo.png" alt="AirAsia Logo" class="logo"></h1>
+        <div class="container">
+            <h1><img src="logo.png" alt="AirAsia Logo" class="logo"></h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="miles.html">Miles Program</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
         <section id="flights">
             <div class="container">
                 <h2>Available Flights</h2>
-                <div class="flight-list">
-                    <div class="flight-item">
-                        <p>Flight Number: AK 6285</p>
-                        <p>Date: 24 August 2024</p>
-                        <p>Time: 17:30</p>
-                        <p>Route: MKZ - PEN</p>
-                        <p class="flight-duration">Duration: 1h 30m</p>
-                        <a href="booking.html?flight=AK6285" class="button">BOOK FLIGHT</a>
                 <div class="flight">
                     <div class="flight-details">
                         <p><strong>Flight Number:</strong> AK 6285</p>
@@ -103,13 +112,6 @@
                         <p><strong>Time:</strong> 19:00</p>
                         <p><strong>Route:</strong> MKZ - PEN</p>
                     </div>
-                    <div class="flight-item">
-                        <p>Flight Number: AK 6231</p>
-                        <p>Date: 25 August 2024</p>
-                        <p>Time: 14:30</p>
-                        <p>Route: KUA - KUL</p>
-                        <p class="flight-duration">Duration: 1h 10m</p>
-                        <a href="booking.html?flight=AK6231" class="button">BOOK FLIGHT</a>
                     <a href="booking.html?flight=6285" class="button">Book Flight</a>
                 </div>
                 <div class="flight">
@@ -123,3 +125,12 @@
                 </div>
             </div>
         </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 AirAsia. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
