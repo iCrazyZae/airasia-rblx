@@ -40,7 +40,7 @@
                     </div>
                 </div>
 
-                <input type="submit" value="Book Flight" class="button">
+                <input type="submit" value="Book Flight" class="button" id="submitButton">
             </form>
         </div>
     </section>
@@ -58,13 +58,18 @@
             const urlParams = new URLSearchParams(window.location.search);
             const flightNumber = urlParams.get('flight');
             const flightInfo = document.getElementById('flightInfo');
+            const submitButton = document.getElementById('submitButton');
 
             if (flightNumber) {
                 flightInfo.textContent = `Flight Number: ${flightNumber}`;
 
                 document.getElementById('bookingForm').addEventListener('submit', (event) => {
                     event.preventDefault();
-                    
+
+                    // Disable the submit button to prevent duplicate bookings
+                    submitButton.disabled = true;
+                    submitButton.value = 'Booking...';
+
                     const name = document.getElementById('name').value;
                     const meal = document.querySelector('input[name="meal"]:checked')?.value || 'No meal selected';
                     const message = `**Booking Log**\nName: ${name}\nFlight Number: ${flightNumber}\nMeal: ${meal}`;
@@ -77,7 +82,7 @@
                     .then(response => response.json())
                     .then(() => {
                         alert('Flight booked successfully and logged!');
-                        window.location.href = 'index.html';  // Redirect to home page or another page
+                        window.location.href = 'booking-registered.html';  // Redirect to booking-registered page
                     })
                     .catch(error => {
                         alert('Successfully Booked Flight.');
