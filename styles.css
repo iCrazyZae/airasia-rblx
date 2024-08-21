@@ -29,20 +29,33 @@ nav ul li a {
 }
 
 .container {
-    max-width: 800px;
+    max-width: 1200px;
     margin: auto;
     padding: 20px;
 }
 
+#flights {
+    padding: 20px 0;
+}
+
 .flight-list {
-    margin: 20px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 .flight-item {
-    padding: 10px;
+    background-color: #fff;
+    padding: 20px;
     border: 1px solid #ddd;
     border-radius: 4px;
-    margin-bottom: 10px;
+    flex: 1 1 calc(50% - 20px); /* Adjust to fit two items per row */
+    box-sizing: border-box;
+}
+
+.flight-item p {
+    margin: 0;
+    padding: 0;
 }
 
 .flight-item .button {
