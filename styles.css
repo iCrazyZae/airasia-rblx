@@ -1,7 +1,12 @@
-body {
-    font-family: Arial, sans-serif;
+html, body {
+    height: 100%;
     margin: 0;
-    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
     background-color: #f4f4f4;
 }
 
@@ -32,6 +37,7 @@ nav ul li a {
     max-width: 1200px;
     margin: auto;
     padding: 20px;
+    flex: 1; /* Allow content to grow and push footer to the bottom */
 }
 
 #flights {
@@ -90,9 +96,4 @@ footer {
     color: #fff;
     padding: 10px 0;
     text-align: center;
-}
-
-.logo {
-    width: 80px; /* Adjust width as needed */
-    height: auto; /* Maintain aspect ratio */
 }
