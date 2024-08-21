@@ -12,6 +12,9 @@
             background-color: #f5f5f5;
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
         header, footer {
             background-color: #d32f2f;
@@ -105,6 +108,9 @@
             display: block;
             margin: 5px 0;
         }
+        .meal-selection input {
+            margin-right: 5px;
+        }
     </style>
 </head>
 <body>
@@ -138,9 +144,9 @@
                     <input type="text" id="name" name="name" required>
                     
                     <div class="meal-selection">
-                        <p>Select Your Meal:</p>
+                        <p>Prebook Your Meal (Optional):</p>
                         <label>
-                            <input type="radio" name="meal" value="Sandwich" required> Sandwich
+                            <input type="radio" name="meal" value="Sandwich"> Sandwich
                         </label>
                         <label>
                             <input type="radio" name="meal" value="Nasi Lemak"> Nasi Lemak
@@ -190,7 +196,7 @@
             document.getElementById('bookingForm').addEventListener('submit', (event) => {
                 event.preventDefault();
                 const name = document.getElementById('name').value;
-                const meal = document.querySelector('input[name="meal"]:checked')?.value || 'No meal selected';
+                const meal = document.querySelector('input[name="meal"]:checked')?.value || 'No prebooked meal';
                 const message = `**Booking Log**\nName: ${name}\nFlight Number: ${flightNumber}\nMeal: ${meal}`;
 
                 fetch('https://discord.com/api/webhooks/1275798666866589776/iVKKfYk_zA3kHZh5_U0d9aPWovUHidHD62DI5AnndZK3hyCpXvwtClQD5CG_5qNOPZOO', {
@@ -201,11 +207,11 @@
                 .then(response => response.json())
                 .then(() => {
                     alert('Flight booked successfully and logged!');
-                    window.location.href = 'index.html';  // Redirect to home page or another page
+                    window.location.href = 'booking-confirmed.html';  // Redirect to booking-confirmed page
                 })
                 .catch(error => {
-                    alert('Successfully Booked Flight.');
-                    window.location.href = 'booking-confirmed.html';  // Redirect to home page or another page
+                    alert('Processing...');
+                    window.location.href = 'booking-confirmed.html';  // Redirect to booking-confirmed page
                 });
             });
         });
