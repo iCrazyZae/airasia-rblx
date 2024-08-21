@@ -89,3 +89,35 @@ footer {
     width: 100%;
     bottom: 0;
 }
+
+/* General button styling */
+.button, .meal-button {
+    background-color: #ff0000; /* Adjust to your preferred color */
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif; /* Ensure font matches */
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+.button:hover, .meal-button:hover {
+    background-color: #cc0000; /* Adjust to your preferred hover color */
+}
+
+/* Flight section styling */
+#booking {
+    margin: 20px;
+}
+
+.prebook-meals {
+    margin: 10px 0;
+}
+
+.meal-options label {
+    display: block;
+    margin-top: 5px;
+}
+
