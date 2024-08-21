@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Your Flight</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -40,7 +41,7 @@
                     </div>
                 </div>
 
-                <input type="submit" value="Book Flight" class="button">
+                <input type="submit" value="Book Flight" class="button" id="bookButton">
             </form>
         </div>
     </section>
@@ -58,6 +59,7 @@
             const urlParams = new URLSearchParams(window.location.search);
             const flightNumber = urlParams.get('flight');
             const flightInfo = document.getElementById('flightInfo');
+            const bookButton = document.getElementById('bookButton');
 
             if (flightNumber) {
                 flightInfo.textContent = `Flight Number: ${flightNumber}`;
@@ -77,10 +79,13 @@
                     .then(response => response.json())
                     .then(() => {
                         alert('Flight booked successfully and logged!');
+                        bookButton.disabled = true;  // Disable button after submission
+                        bookButton.value = 'Flight Booked';  // Change button text
                         window.location.href = 'index.html';  // Redirect to home page or another page
                     })
                     .catch(error => {
                         alert('Successfully Booked Flight.');
+                        window.location.href = 'index.html';  // Redirect to home page or another page
                     });
                 });
 
