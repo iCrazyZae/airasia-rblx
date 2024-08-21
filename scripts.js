@@ -19,8 +19,17 @@ document.addEventListener('DOMContentLoaded', () => {
             listItem.innerHTML = `<strong>${flight.number}</strong><br>
                                   Date: ${flight.date}<br>
                                   Time: ${flight.time}<br>
-                                  Route: ${flight.route}`;
+                                  Route: ${flight.route}<br>
+                                  <button class="bookFlightButton" data-flight="${flight.number}">Book Flight</button>`;
             flightList.appendChild(listItem);
+        });
+
+        // Add event listener to buttons
+        document.querySelectorAll('.bookFlightButton').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const flightNumber = e.target.getAttribute('data-flight');
+                window.location.href = `book.html?flight=${encodeURIComponent(flightNumber)}`;
+            });
         });
     }
 });
