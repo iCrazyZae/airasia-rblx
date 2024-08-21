@@ -1,123 +1,113 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
-
+/* General Styles */
 body {
     font-family: 'Montserrat', sans-serif;
-    background-color: #f3f3f3;
-    color: #333;
     margin: 0;
     padding: 0;
 }
 
 .container {
+    width: 90%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
 }
 
+/* Header Styles */
 header {
-    background-color: #D71920;
+    background-color: #f8f8f8;
     padding: 20px 0;
-    text-align: center;
-}
-
-header img.logo {
-    max-width: 150px;
 }
 
 nav ul {
-    list-style-type: none;
+    list-style: none;
     padding: 0;
+    display: flex;
+    justify-content: center;
 }
 
 nav ul li {
-    display: inline;
     margin: 0 15px;
 }
 
 nav ul li a {
-    color: white;
     text-decoration: none;
-    font-weight: bold;
+    color: #333;
 }
 
-section h2 {
-    color: #D71920;
-    margin-bottom: 20px;
-}
-
+/* Flight List Styles */
 .flight-list {
     display: flex;
+    flex-direction: column;
     gap: 20px;
-    flex-wrap: wrap;
 }
 
 .flight-item {
-    background-color: white;
-    border: 1px solid #ddd;
+    background: #fff;
+    border-radius: 8px;
     padding: 20px;
-    width: calc(50% - 20px);
-    position: relative;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .flight-item p {
-    margin: 5px 0;
+    margin: 0;
+    padding: 0;
 }
 
-.flight-duration {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    font-weight: bold;
-}
-
+/* Button Styles */
 .button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #D71920;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    margin-top: 10px;
-}
-
-footer {
-    background-color: #D71920;
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-    position: absolute;
-    width: 100%;
-    bottom: 0;
-}
-
-/* General button styling */
-.button, .meal-button {
-    background-color: #ff0000; /* Adjust to your preferred color */
-    color: #ffffff;
+    background-color: #007bff;
+    color: #fff;
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
-    cursor: pointer;
-    font-family: 'Montserrat', sans-serif; /* Ensure font matches */
+    text-align: center;
+    text-decoration: none;
     font-size: 16px;
-    text-transform: uppercase;
+    cursor: pointer;
 }
 
-.button:hover, .meal-button:hover {
-    background-color: #cc0000; /* Adjust to your preferred hover color */
+.button:hover {
+    background-color: #0056b3;
 }
 
-/* Flight section styling */
-#booking {
-    margin: 20px;
+/* Footer Styles */
+footer {
+    background-color: #f8f8f8;
+    padding: 10px 0;
+    text-align: center;
 }
 
-.prebook-meals {
-    margin: 10px 0;
+/* Mobile Styles */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    .flight-list {
+        flex-direction: column;
+    }
+
+    .flight-item {
+        padding: 15px;
+    }
+
+    .button {
+        width: 100%;
+        padding: 15px;
+        font-size: 18px;
+    }
 }
 
-.meal-options label {
-    display: block;
-    margin-top: 5px;
-}
+@media (max-width: 480px) {
+    .container {
+        width: 95%;
+    }
 
+    .button {
+        font-size: 16px;
+    }
+}
