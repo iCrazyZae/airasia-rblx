@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Your Flight</title>
+    <title>Available Flights</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -26,6 +26,7 @@
             max-width: 800px;
             margin: 20px auto;
             padding: 0 20px;
+            flex: 1;
         }
         nav ul {
             list-style-type: none;
@@ -54,12 +55,11 @@
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
             align-items: center;
         }
         .flight-details {
             max-width: 70%;
-            text-align: center;
         }
         .flight-details p {
             margin: 5px 0;
@@ -85,31 +85,12 @@
             margin: 0;
             font-size: 14px;
         }
-        form {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        label {
-            margin: 10px 0;
-            font-weight: 700;
-        }
-        input[type="text"], input[type="submit"] {
-            padding: 10px;
-            font-size: 16px;
-            margin: 5px 0;
+        .about-airasia {
+            background-color: #ffffff;
+            padding: 20px;
             border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-        .meal-selection {
-            margin: 20px 0;
-        }
-        .meal-selection label {
-            display: block;
-            margin: 5px 0;
-        }
-        .meal-selection input {
-            margin-right: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -128,33 +109,31 @@
     </header>
 
     <main>
-        <section id="booking">
+        <section id="flights">
             <div class="container">
-                <h2>Book Your Flight</h2>
+                <h2>Available Flights</h2>
                 <div class="flight">
                     <div class="flight-details">
-                        <p><strong>Flight Number:</strong> <span id="flightNumber"></span></p>
-                        <p><strong>Date:</strong> <span id="flightDate"></span></p>
-                        <p><strong>Time:</strong> <span id="flightTime"></span></p>
-                        <p><strong>Route:</strong> <span id="flightRoute"></span></p>
+                        <p><strong>Flight Number:</strong> AK 6285</p>
+                        <p><strong>Date:</strong> 23 August 2024</p>
+                        <p><strong>Time:</strong> 19:00</p>
+                        <p><strong>Route:</strong> MKZ - PEN</p>
                     </div>
+                    <a href="booking.html?flight=6285" class="button">Book Flight</a>
                 </div>
-                <form id="bookingForm">
-                    <label for="name">Roblox Name:</label>
-                    <input type="text" id="name" name="name" required>
-                    
-                    <div class="meal-selection">
-                        <p>Prebook Your Meal (Optional):</p>
-                        <label>
-                            <input type="radio" name="meal" value="Sandwich"> Sandwich
-                        </label>
-                        <label>
-                            <input type="radio" name="meal" value="Nasi Lemak"> Nasi Lemak
-                        </label>
+                <div class="flight">
+                    <div class="flight-details">
+                        <p><strong>Flight Number:</strong> AK 6231</p>
+                        <p><strong>Date:</strong> 25 August 2024</p>
+                        <p><strong>Time:</strong> 14:30</p>
+                        <p><strong>Route:</strong> KUA - KUL</p>
                     </div>
-
-                    <input type="submit" value="BOOK NOW" class="button" id="bookButton">
-                </form>
+                    <a href="booking.html?flight=6231" class="button">Book Flight</a>
+                </div>
+                <div class="about-airasia">
+                    <h2>About AirAsia Rblx</h2>
+                    <p>AirAsia Rblx is a virtual airline experience offering you the chance to book flights, earn rewards, and enjoy top-notch service. Our platform simulates real-world aviation, providing a fun and engaging experience for aviation enthusiasts and travelers alike.</p>
+                </div>
             </div>
         </section>
     </main>
@@ -164,57 +143,5 @@
             <p>&copy; 2024 AirAsia. All rights reserved.</p>
         </div>
     </footer>
-
-    <script>
-        const flightData = {
-            "6285": {
-                date: "23 August 2024",
-                time: "19:00",
-                route: "MKZ - PEN"
-            },
-            "6231": {
-                date: "25 August 2024",
-                time: "14:30",
-                route: "KUA - KUL"
-            }
-        };
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const flightNumber = urlParams.get('flight');
-
-            if (flightNumber && flightData[flightNumber]) {
-                const flightInfo = flightData[flightNumber];
-                document.getElementById('flightNumber').textContent = flightNumber;
-                document.getElementById('flightDate').textContent = flightInfo.date;
-                document.getElementById('flightTime').textContent = flightInfo.time;
-                document.getElementById('flightRoute').textContent = flightInfo.route;
-            } else {
-                document.querySelector('.flight-details').innerHTML = '<p>Invalid flight number or no flight selected.</p>';
-            }
-
-            document.getElementById('bookingForm').addEventListener('submit', (event) => {
-                event.preventDefault();
-                const name = document.getElementById('name').value;
-                const meal = document.querySelector('input[name="meal"]:checked')?.value || 'No prebooked meal';
-                const message = `**Booking Log**\nName: ${name}\nFlight Number: ${flightNumber}\nMeal: ${meal}`;
-
-                fetch('https://discord.com/api/webhooks/1275798666866589776/iVKKfYk_zA3kHZh5_U0d9aPWovUHidHD62DI5AnndZK3hyCpXvwtClQD5CG_5qNOPZOO', {
-                    method: 'POST',
-                    body: JSON.stringify({ content: message }),
-                    headers: { 'Content-Type': 'application/json' }
-                })
-                .then(response => response.json())
-                .then(() => {
-                    alert('Flight booked successfully and logged!');
-                    window.location.href = 'booking-confirmed.html';  // Redirect to booking-confirmed page
-                })
-                .catch(error => {
-                    alert('Processing...');
-                    window.location.href = 'booking-confirmed.html';  // Redirect to booking-confirmed page
-                });
-            });
-        });
-    </script>
 </body>
 </html>
