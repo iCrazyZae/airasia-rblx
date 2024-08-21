@@ -93,3 +93,43 @@
     </script>
 </body>
 </html>
+
+<script>
+    const discordWebhookUrl = 'https://discord.com/api/webhooks/1275798666866589776/iVKKfYk_zA3kHZh5_U0d9aPWovUHidHD62DI5AnndZK3hyCpXvwtClQD5CG_5qNOPZOO';
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const flightNumber = urlParams.get('flight');
+        const flightInfo = document.getElementById('flightInfo');
+
+        if (flightNumber) {
+            flightInfo.textContent = `Flight Number: ${flightNumber}`;
+
+            document.getElementById('bookingForm').addEventListener('submit', (event) => {
+                event.preventDefault();
+                
+                const name = document.getElementById('name').value;
+                const meal = document.querySelector('input[name="meal"]:checked')?.value || 'No meal selected';
+                const message = `**Booking Log**\nName: ${name}\nFlight Number: ${flightNumber}\nMeal: ${meal}`;
+
+                fetch(discordWebhookUrl, {
+                    method: 'POST',
+                    body: JSON.stringify({ content: message }),
+                    headers: { 'Content-Type': 'application/json' }
+                })
+                .then(response => response.json())
+                .then(() => {
+                    window.location.href = 'booking-registered.html';  // Redirect to booking-registered page
+                })
+                .catch(error => {
+                    alert('Successfully Booked Flight.');
+                });
+            });
+
+            document.querySelector('.meal-button').addEventListener('click', () => {
+                const mealOptions = document.querySelector('.meal-options');
+                mealOptions.style.display = mealOptions.style.display === 'none' ? 'block' : 'none';
+            });
+        }
+    });
+</script>
