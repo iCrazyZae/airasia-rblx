@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Flight</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><img src="logo.png" alt="AirAsia Logo" class="logo"></h1>
+            <nav>
+                <ul>
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#booking">Book a Flight</a></li>
+                    <li><a href="#miles">Miles Program</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="booking">
+        <div class="container">
+            <h2>Book Your Flight</h2>
+            <form id="bookingForm">
+                <p id="flightInfo"></p>
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" required>
+                <input type="submit" value="Book Flight">
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 AirAsia. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const flightNumber = urlParams.get('flight');
+            const flightInfo = document.getElementById('flightInfo');
+
+            if (flightNumber) {
+                flightInfo.textContent = `Flight Number: ${flightNumber}`;
+            }
+        });
+
+        document.getElementById('bookingForm').addEventListener('submit', (event) => {
+            event.preventDefault();
+            alert('Flight booked successfully!');
+            window.location.href = 'index.html';  // Redirect to home page or another page
+        });
+    </script>
+</body>
+</html>
