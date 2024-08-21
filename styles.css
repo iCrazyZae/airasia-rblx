@@ -167,16 +167,3 @@ footer .container {
     color: #666666;
     cursor: not-allowed;
 }
-
-/* Shorter text box for Roblox name */
-input[type="text"] {
-    width: 50%; /* Adjusted width for the text box */
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 20px;
-}
-
-label {
-    font-family: 'Montserrat', sans-serif;
-}
