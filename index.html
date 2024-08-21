@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AirAsia - Roblox Airline</title>
     <link rel="stylesheet" href="styles.css">
+    <script defer src="scripts.js"></script>
 </head>
 <body>
     <header>
@@ -30,7 +31,7 @@
     <section id="booking">
         <div class="container">
             <h2>Book a Flight</h2>
-            <form action="YOUR_GOOGLE_FORM_URL" method="post" target="_blank">
+            <form id="bookingForm">
                 <label for="departure">Departure City:</label>
                 <input type="text" id="departure" name="departure" required>
                 
@@ -43,12 +44,40 @@
                 <label for="passengers">Number of Passengers:</label>
                 <input type="number" id="passengers" name="passengers" required>
 
+                <label for="flightNumber">Flight Number:</label>
+                <select id="flightNumber" name="flightNumber" required></select>
+
                 <input type="submit" value="Submit">
             </form>
+
+            <h3>Available Flights</h3>
+            <ul id="flightList"></ul>
+
+            <button id="addFlightButton">Add Flight Number</button>
+            <input type="text" id="newFlightNumber" placeholder="Enter new flight number">
         </div>
     </section>
 
     <section id="miles">
         <div class="container">
             <h2>Miles Program</h2>
-            <p>Join our Miles Program to earn rewards on every flight!</
+            <p>Join our Miles Program to earn rewards on every flight!</p>
+            <!-- Add more details about the miles program here -->
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <p>If you have any questions, please feel free to reach out to us!</p>
+            <!-- Add your contact information or form here -->
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 AirAsia. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
