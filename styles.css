@@ -1,14 +1,8 @@
-/* Import Lato font from Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
-
-/* Apply Lato font to the whole page */
-body {
-    font-family: 'Lato', sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
+/* Improved layout for better readability and design */
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
 }
 
 header {
@@ -16,6 +10,9 @@ header {
     color: #fff;
     padding: 10px 0;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 nav ul {
@@ -26,23 +23,13 @@ nav ul {
 
 nav ul li {
     display: inline;
-    margin: 0 10px;
+    margin: 0 15px;
 }
 
 nav ul li a {
     color: #fff;
     text-decoration: none;
-}
-
-.container {
-    max-width: 1200px;
-    margin: auto;
-    padding: 20px;
-    flex: 1; /* Allow content to grow and push footer to the bottom */
-}
-
-#flights {
-    padding: 20px 0;
+    font-weight: bold;
 }
 
 .flight-list {
@@ -61,11 +48,10 @@ nav ul li a {
 }
 
 .flight-item p {
-    margin: 0;
-    padding: 0;
+    margin: 0 0 10px;
 }
 
-.flight-item .button {
+.button {
     display: inline-block;
     padding: 10px 20px;
     background-color: #ff0000; /* Red background color */
@@ -73,22 +59,10 @@ nav ul li a {
     text-decoration: none;
     border-radius: 4px;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-.flight-item .button:hover {
-    background-color: #cc0000; /* Darker red on hover */
-}
-
-button, input[type="submit"] {
-    padding: 10px;
-    background-color: #ff0000; /* Red background color */
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-button:hover, input[type="submit"]:hover {
+.button:hover {
     background-color: #cc0000; /* Darker red on hover */
 }
 
@@ -98,9 +72,7 @@ footer {
     padding: 10px 0;
     text-align: center;
     margin-top: auto; /* Push footer to bottom */
-}
-
-.logo {
-    max-width: 150px; /* Adjust size as needed */
-    height: auto; /* Maintain aspect ratio */
+    position: relative;
+    bottom: 0;
+    width: 100%;
 }
