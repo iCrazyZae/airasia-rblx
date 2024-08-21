@@ -6,80 +6,6 @@
     <title>Book Your Flight</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #f5f5f5;
-            margin: 0;
-            padding: 0;
-        }
-        header, footer {
-            background-color: #d32f2f;
-            color: white;
-            padding: 10px 0;
-            text-align: center;
-        }
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 0 20px;
-        }
-        h2 {
-            color: #d32f2f;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        form {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-        input[type="text"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 20px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            font-size: 16px;
-        }
-        .prebook-meals, .submit-section {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
-        .meal-button, .button {
-            padding: 10px 20px;
-            background-color: #d32f2f;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: 700;
-            text-transform: uppercase;
-            font-size: 14px;
-            text-align: center;
-        }
-        .meal-button:hover, .button:hover {
-            background-color: #b71c1c;
-        }
-        .meal-options {
-            margin-top: 10px;
-        }
-        .meal-options label {
-            margin-right: 10px;
-        }
-        .footer p {
-            margin: 0;
-            font-size: 14px;
-        }
-    </style>
 </head>
 <body>
     <header>
@@ -104,21 +30,17 @@
                     <label for="name">Roblox Name:</label>
                     <input type="text" id="name" name="name" required>
                     
-                    <div class="prebook-meals">
-                        <button type="button" class="meal-button">Prebook Meals</button>
-                        <div class="meal-options" style="display: none;">
-                            <label>
-                                <input type="radio" name="meal" value="sandwich"> Sandwich
-                            </label>
-                            <label>
-                                <input type="radio" name="meal" value="nasi lemak"> Nasi Lemak
-                            </label>
-                        </div>
+                    <div class="meal-selection">
+                        <p>Select Your Meal:</p>
+                        <label>
+                            <input type="radio" name="meal" value="Sandwich" required> Sandwich
+                        </label>
+                        <label>
+                            <input type="radio" name="meal" value="Nasi Lemak"> Nasi Lemak
+                        </label>
                     </div>
 
-                    <div class="submit-section">
-                        <input type="submit" value="Book Now" class="button" id="bookButton">
-                    </div>
+                    <input type="submit" value="BOOK NOW" class="button" id="bookButton">
                 </form>
             </div>
         </section>
@@ -129,51 +51,35 @@
             <p>&copy; 2024 AirAsia. All rights reserved.</p>
         </div>
     </footer>
-
-    <script>
-        const discordWebhookUrl = 'https://discord.com/api/webhooks/1275798666866589776/iVKKfYk_zA3kHZh5_U0d9aPWovUHidHD62DI5AnndZK3hyCpXvwtClQD5CG_5qNOPZOO';
-
-        // Function to get query parameter from URL
-        function getQueryParam(param) {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(param);
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            // Get the flight number from the URL
-            const flightNumber = getQueryParam('flight');
-            document.getElementById('flightInfo').textContent = `Booking for Flight Number: ${flightNumber}`;
-
-            // Toggle meal options
-            document.querySelector('.meal-button').addEventListener('click', () => {
-                const mealOptions = document.querySelector('.meal-options');
-                mealOptions.style.display = mealOptions.style.display === 'none' ? 'block' : 'none';
-            });
-
-            // Handle form submission
-            document.getElementById('bookingForm').addEventListener('submit', (event) => {
-                event.preventDefault();
-                
-                const name = document.getElementById('name').value;
-                const meal = document.querySelector('input[name="meal"]:checked')?.value || 'No meal selected';
-                const message = `**Booking Log**\nName: ${name}\nFlight Number: ${flightNumber}\nMeal: ${meal}`;
-
-                fetch(discordWebhookUrl, {
-                    method: 'POST',
-                    body: JSON.stringify({ content: message }),
-                    headers: { 'Content-Type': 'application/json' }
-                })
-                .then(response => response.json())
-                .then(() => {
-                    alert('Flight booked successfully and logged!');
-                    window.location.href = 'index.html';  // Redirect to home page or another page
-                })
-                .catch(error => {
-                    alert('Successfully Booked Flight.');
-                    window.location.href = 'index.html';  // Redirect to home page or another page
-                });
-            });
-        });
-    </script>
 </body>
 </html>
+
+<script>
+    const discordWebhookUrl = 'https://discord.com/api/webhooks/1275798666866589776/iVKKfYk_zA3kHZh5_U0d9aPWovUHidHD62DI5AnndZK3hyCpXvwtClQD5CG_5qNOPZOO';
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // Handle form submission
+        document.getElementById('bookingForm').addEventListener('submit', (event) => {
+            event.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const meal = document.querySelector('input[name="meal"]:checked')?.value || 'No meal selected';
+            const flightNumber = document.getElementById('flightInfo').textContent;
+            const message = `**Booking Log**\nName: ${name}\nFlight Number: ${flightNumber}\nMeal: ${meal}`;
+
+            fetch(discordWebhookUrl, {
+                method: 'POST',
+                body: JSON.stringify({ content: message }),
+                headers: { 'Content-Type': 'application/json' }
+            })
+            .then(response => response.json())
+            .then(() => {
+                alert('Flight booked successfully and logged!');
+                window.location.href = 'index.html';  // Redirect to home page or another page
+            })
+            .catch(error => {
+                alert('Successfully Booked Flight.');
+            });
+        });
+    });
+</script>
