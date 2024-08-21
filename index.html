@@ -34,7 +34,7 @@
                         <p>Route: MKZ > PEN</p>
                     </div>
                     <div class="flight-duration">
-                        <p>Duration: 2h 30m</p>
+                        <p>Duration: 1h 30m</p>
                     </div>
                     <a href="booking.html?flight=AK%206285" class="button">Book Flight</a>
                 </div>
@@ -46,7 +46,7 @@
                         <p>Route: KUA > KUL</p>
                     </div>
                     <div class="flight-duration">
-                        <p>Duration: 1h 45m</p>
+                        <p>Duration: 1h 10m</p>
                     </div>
                     <a href="booking.html?flight=AK%206231" class="button">Book Flight</a>
                 </div>
@@ -69,7 +69,7 @@
                     event.preventDefault();
                     const flightNumber = new URL(button.href).searchParams.get('flight');
                     const name = prompt('Please enter your name:');
-
+                    
                     if (name) {
                         const message = `**Booking Log**\nName: ${name}\nFlight Number: ${flightNumber}`;
 
@@ -78,14 +78,14 @@
                             body: JSON.stringify({ content: message }),
                             headers: { 'Content-Type': 'application/json' }
                         })
-                            .then(response => response.json())
-                            .then(() => {
-                                alert('Successfully Booked Flight.');
-                                window.location.href = 'index.html';  // Redirect to home page or another page
-                            })
-                            .catch(error => {
-                                alert('Successfully Booked Flight.');
-                            });
+                        .then(response => response.json())
+                        .then(() => {
+                            alert('Successfully Booked Flight.');
+                            window.location.href = 'index.html';  // Redirect to home page or another page
+                        })
+                        .catch(error => {
+                            alert('ESuccessfully Booked Flight.');
+                        });
                     }
                 });
             });
