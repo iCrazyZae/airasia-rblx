@@ -29,8 +29,8 @@
                 <label for="name">Your Name:</label>
                 <input type="text" id="name" name="name" required>
 
-                <button type="button" id="prebookMealsButton">Prebook Meals</button>
-                <div id="mealOptions" style="display: none;">
+                <div id="mealSelection">
+                    <h3>Prebook Your Meal:</h3>
                     <label>
                         <input type="radio" name="meal" value="Sandwich" required>
                         Sandwich
@@ -59,22 +59,15 @@
             const urlParams = new URLSearchParams(window.location.search);
             const flightNumber = urlParams.get('flight');
             const flightInfo = document.getElementById('flightInfo');
-            const prebookMealsButton = document.getElementById('prebookMealsButton');
-            const mealOptions = document.getElementById('mealOptions');
 
             if (flightNumber) {
                 flightInfo.textContent = `Flight Number: ${flightNumber}`;
-
-                prebookMealsButton.addEventListener('click', () => {
-                    mealOptions.style.display = mealOptions.style.display === 'none' ? 'block' : 'none';
-                });
-
                 document.getElementById('bookingForm').addEventListener('submit', (event) => {
                     event.preventDefault();
-
+                    
                     const name = document.getElementById('name').value;
-                    const selectedMeal = document.querySelector('input[name="meal"]:checked') ? document.querySelector('input[name="meal"]:checked').value : 'No Meal Selected';
-                    const message = `**Booking Log**\nName: ${name}\nFlight Number: ${flightNumber}\nMeal: ${selectedMeal}`;
+                    const meal = document.querySelector('input[name="meal"]:checked').value;
+                    const message = `**Booking Log**\nName: ${name}\nFlight Number: ${flightNumber}\nMeal: ${meal}`;
 
                     fetch(discordWebhookUrl, {
                         method: 'POST',
