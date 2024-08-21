@@ -1,20 +1,29 @@
+/* General body styling */
 body {
     font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+/* Header styling */
 header {
-    background-color: #ff0000;
-    padding: 0px 0;
+    background-color: #d32f2f;
+    color: white;
+    padding: 10px 0;
     border-bottom: 1px solid #e1e1e1;
 }
 
-.header .container {
+header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-.logo {
+header .logo {
     height: 50px;
 }
 
@@ -22,10 +31,10 @@ nav ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
+    display: flex;
 }
 
 nav ul li {
-    display: inline;
     margin-right: 20px;
 }
 
@@ -35,135 +44,46 @@ nav ul li a {
     font-weight: 700;
 }
 
-#flights {
+/* Main section styling */
+main {
     padding: 40px 0;
 }
 
-.flight-list {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.flight-item {
-    background: #fff;
-    border: 1px solid #e1e1e1;
-    border-radius: 8px;
-    padding: 20px;
-    margin: 10px;
-    width: 100%;
-    max-width: 600px;
-    text-align: center;
-    position: relative;
-}
-
-.flight-item p {
-    margin: 10px 0;
-}
-
-.flight-duration {
-    font-weight: 700;
-    position: absolute;
-    right: 20px;
-    top: 20px;
-}
-
-.button {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 16px;
-    color: #fff;
-    background-color: #ff0000;
-    border: none;
-    border-radius: 4px;
-    text-decoration: none;
-    cursor: pointer;
-    text-align: center;
-    margin: 10px;
-}
-
-.button:hover {
-    background-color: #cc0000;
-}
-
-.prebook-meals .meal-button {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 16px;
-    color: #fff;
-    background-color: #ff0000;
-    border: none;
-    border-radius: 4px;
-    text-decoration: none;
-    cursor: pointer;
-    text-align: center;
-    margin: 10px;
-}
-
-.prebook-meals .meal-button:hover {
-    background-color: #cc0000;
-}
-
-footer {
-    background-color: #ff0000;
-    border-top: 1px solid #e1e1e1;
-    padding: 0px 0;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-}
-
 .container {
-    width: 90%;
     max-width: 1200px;
     margin: 0 auto;
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-}
-
-/* Main content area should take up the remaining space */
-main {
-    flex: 1;
-}
-
-footer {
-    background-color: #f1f1f1;
-    padding: 10px 0;
-    text-align: center;
-    border-top: 1px solid #e1e1e1;
-}
-
-footer .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     padding: 0 20px;
 }
 
-.button, .meal-button {
-    background-color: #ff0000;
-    color: #ffffff;
-    border: none;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
+button, .button {
     display: inline-block;
+    padding: 10px 20px;
     font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
+    color: #fff;
+    background-color: #d32f2f; /* Red button color */
+    border: none;
     border-radius: 4px;
+    text-decoration: none;
+    cursor: pointer;
+    text-align: center;
+    margin: 10px;
 }
 
-.button:hover, .meal-button:hover {
-    background-color: #cc0000;
+button:hover, .button:hover {
+    background-color: #b71c1c; /* Darker red on hover */
 }
 
-#bookButton:disabled {
-    background-color: #cccccc;
-    color: #666666;
-    cursor: not-allowed;
+/* Footer styling */
+footer {
+    background-color: #d32f2f;
+    color: white;
+    padding: 10px 0;
+    border-top: 1px solid #e1e1e1;
+    text-align: center;
+}
+
+footer .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
