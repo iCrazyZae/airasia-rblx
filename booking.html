@@ -21,80 +21,37 @@
         </div>
     </header>
 
-    <section id="booking">
-        <div class="container">
-            <h2>Book Your Flight</h2>
-            <p id="flightInfo"></p>
-            <form id="bookingForm">
-                <label for="name">Your Name:</label>
-                <input type="text" id="name" name="name" required>
-                
-                <div class="prebook-meals">
-                    <button type="button" class="meal-button">Prebook Meals</button>
-                    <div class="meal-options" style="display: none;">
-                        <label>
-                            <input type="radio" name="meal" value="sandwich"> Sandwich
-                        </label>
-                        <label>
-                            <input type="radio" name="meal" value="nasi lemak"> Nasi Lemak
-                        </label>
+    <main>
+        <section id="booking">
+            <div class="container">
+                <h2>Book Your Flight</h2>
+                <p id="flightInfo"></p>
+                <form id="bookingForm">
+                    <label for="name">Your Name:</label>
+                    <input type="text" id="name" name="name" required>
+                    
+                    <div class="prebook-meals">
+                        <button type="button" class="meal-button">Prebook Meals</button>
+                        <div class="meal-options" style="display: none;">
+                            <label>
+                                <input type="radio" name="meal" value="sandwich"> Sandwich
+                            </label>
+                            <label>
+                                <input type="radio" name="meal" value="nasi lemak"> Nasi Lemak
+                            </label>
+                        </div>
                     </div>
-                </div>
 
-                <input type="submit" value="Book Flight" class="button" id="bookButton">
-            </form>
-        </div>
-    </section>
+                    <input type="submit" value="Book Flight" class="button" id="bookButton">
+                </form>
+            </div>
+        </section>
+    </main>
 
     <footer>
         <div class="container">
             <p>&copy; 2024 AirAsia. All rights reserved.</p>
         </div>
     </footer>
-
-    <script>
-        const discordWebhookUrl = 'https://discord.com/api/webhooks/1275798666866589776/iVKKfYk_zA3kHZh5_U0d9aPWovUHidHD62DI5AnndZK3hyCpXvwtClQD5CG_5qNOPZOO';
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const flightNumber = urlParams.get('flight');
-            const flightInfo = document.getElementById('flightInfo');
-            const bookButton = document.getElementById('bookButton');
-
-            if (flightNumber) {
-                flightInfo.textContent = `Flight Number: ${flightNumber}`;
-
-                document.getElementById('bookingForm').addEventListener('submit', (event) => {
-                    event.preventDefault();
-                    
-                    const name = document.getElementById('name').value;
-                    const meal = document.querySelector('input[name="meal"]:checked')?.value || 'No meal selected';
-                    const message = `**Booking Log**\nName: ${name}\nFlight Number: ${flightNumber}\nMeal: ${meal}`;
-
-                    fetch(discordWebhookUrl, {
-                        method: 'POST',
-                        body: JSON.stringify({ content: message }),
-                        headers: { 'Content-Type': 'application/json' }
-                    })
-                    .then(response => response.json())
-                    .then(() => {
-                        alert('Flight booked successfully and logged!');
-                        bookButton.disabled = true;  // Disable button after submission
-                        bookButton.value = 'Flight Booked';  // Change button text
-                        window.location.href = 'index.html';  // Redirect to home page or another page
-                    })
-                    .catch(error => {
-                        alert('Successfully Booked Flight.');
-                        window.location.href = 'index.html';  // Redirect to home page or another page
-                    });
-                });
-
-                document.querySelector('.meal-button').addEventListener('click', () => {
-                    const mealOptions = document.querySelector('.meal-options');
-                    mealOptions.style.display = mealOptions.style.display === 'none' ? 'block' : 'none';
-                });
-            }
-        });
-    </script>
 </body>
 </html>
