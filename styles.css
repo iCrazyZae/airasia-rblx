@@ -154,3 +154,64 @@ input[type="text"], input[type="submit"] {
 label {
     font-family: 'Montserrat', sans-serif;
 }
+
+/* Ensure body and html take full height */
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Use flexbox to make sure the footer sticks to the bottom */
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Main content area should take up the remaining space */
+main {
+    flex: 1;
+}
+
+/* Footer styles */
+footer {
+    background-color: #f1f1f1;
+    padding: 10px 0;
+    text-align: center;
+    border-top: 1px solid #e1e1e1;
+}
+
+/* Ensure all containers inside the footer are aligned centrally */
+footer .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+}
+
+/* Button styling */
+.button, .meal-button {
+    background-color: #ff0000; /* Red background for buttons */
+    color: #ffffff; /* White text color */
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+/* Button hover effects */
+.button:hover, .meal-button:hover {
+    background-color: #cc0000; /* Darker red when hovering */
+}
+
+/* Style for disabled button */
+#bookButton:disabled {
+    background-color: #cccccc; /* Grey background for disabled state */
+    color: #666666; /* Darker text color for disabled state */
+    cursor: not-allowed;
+}
