@@ -92,6 +92,25 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             margin-top: 20px;
         }
+        .photo-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .photo-box {
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: calc(33% - 20px);
+            box-sizing: border-box;
+        }
+        .photo-box img {
+            width: 100%;
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -133,6 +152,18 @@
                 <div class="about-airasia">
                     <h2>About AirAsia Rblx</h2>
                     <p>AirAsia Rblx is a virtual airline experience offering you the chance to book flights, earn rewards, and enjoy top-notch service. Our platform simulates real-world aviation, providing a fun and engaging experience for aviation enthusiasts and travelers alike.</p>
+                </div>
+                <div class="photo-gallery">
+                    <div class="photo-box">
+                        <img src="photo1.jpg" alt="Photo 1">
+                    </div>
+                    <div class="photo-box">
+                        <img src="photo2.jpg" alt="Photo 2">
+                    </div>
+                    <div class="photo-box">
+                        <img src="photo3.jpg" alt="Photo 3">
+                    </div>
+                    <!-- Add more photo-boxes as needed -->
                 </div>
             </div>
         </section>
