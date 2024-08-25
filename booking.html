@@ -153,6 +153,7 @@
                         </label>
                         </label>
                             <input type="radio" name="meal" value="Bukhara Chicken Biryani"> Bukhara Chicken Biryani
+                        </label>
                     </div>
 
                     <input type="submit" value="BOOK NOW" class="button" id="bookButton">
@@ -169,16 +170,10 @@
 
     <script>
         const flightData = {
-            "6285": {
-                date: "23 August 2024",
-                time: "19:00",
-                route: "MKZ - PEN"
-            },
-            "6231": {
-                date: "25 August 2024",
-                time: "14:30",
+            "6232": {
+                date: "31 August 2024",
+                time: "14:30 GMT+8",
                 route: "KUA - KUL"
-            }
         };
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -201,7 +196,7 @@
                 const meal = document.querySelector('input[name="meal"]:checked')?.value || 'No prebooked meal';
                 const message = `**Booking Log**\nName: ${name}\nFlight Number: ${flightNumber}\nMeal: ${meal}`;
 
-                fetch('https://discord.com/api/webhooks/1275798666866589776/iVKKfYk_zA3kHZh5_U0d9aPWovUHidHD62DI5AnndZK3hyCpXvwtClQD5CG_5qNOPZOO', {
+                fetch('https://discord.com/api/webhooks/1277225983904055361/vv0EXJPSBIt7DEpSzxZ2Eowj0NU8f0OuL4JJKHsHEEMrl7ST4nkVJx6zk20ZWAILfSj-', {
                     method: 'POST',
                     body: JSON.stringify({ content: message }),
                     headers: { 'Content-Type': 'application/json' }
