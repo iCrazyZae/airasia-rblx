@@ -143,22 +143,21 @@
                     <label for="name">Roblox Name:</label>
                     <input type="text" id="name" name="name" required>
                     
-                   <div class="meal-selection">
-    <p><strong>Prebook Your Meal (Optional):</strong></p>
-    <label>
-        <input type="radio" name="meal" value="Pak Nasser's Nasi Lemak">
-        <strong>Pak Nasser's Nasi Lemak</strong>
-    </label>
-    <label>
-        <input type="radio" name="meal" value="Uncle Chin's Chicken Rice">
-        <strong>Uncle Chin's Chicken Rice</strong>
-    </label>
-    <label>
-        <input type="radio" name="meal" value="Bukhara Chicken Biryani">
-        <strong>Bukhara Chicken Biryani</strong>
-    </label>
-</div>
-
+                    <div class="meal-selection">
+                        <p><strong>Prebook Your Meal (Optional):</strong></p>
+                        <label>
+                            <input type="radio" name="meal" value="Pak Nasser's Nasi Lemak">
+                            <strong>Pak Nasser's Nasi Lemak</strong>
+                        </label>
+                        <label>
+                            <input type="radio" name="meal" value="Uncle Chin's Chicken Rice">
+                            <strong>Uncle Chin's Chicken Rice</strong>
+                        </label>
+                        <label>
+                            <input type="radio" name="meal" value="Bukhara Chicken Biryani">
+                            <strong>Bukhara Chicken Biryani</strong>
+                        </label>
+                    </div>
 
                     <input type="submit" value="BOOK NOW" class="button" id="bookButton">
                 </form>
@@ -173,17 +172,22 @@
     </footer>
 
     <script>
+        // Define the flight data
         const flightData = {
             "AK 6232": {
                 date: "31 August 2024",
                 time: "14:30 GMT+8",
                 route: "KUA - KUL"
+            }
+            // You can add more flights here
         };
 
+        // On document load, populate flight details
         document.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
-            const flightNumber = urlParams.get('flight');
+            const flightNumber = urlParams.get('flight'); // Get the flight number from the URL
 
+            // Check if the flight number exists in the flightData object
             if (flightNumber && flightData[flightNumber]) {
                 const flightInfo = flightData[flightNumber];
                 document.getElementById('flightNumber').textContent = flightNumber;
@@ -191,16 +195,19 @@
                 document.getElementById('flightTime').textContent = flightInfo.time;
                 document.getElementById('flightRoute').textContent = flightInfo.route;
             } else {
+                // If no valid flight is found, show a message
                 document.querySelector('.flight-details').innerHTML = '<p>Invalid flight number or no flight selected.</p>';
             }
 
+            // Handle form submission
             document.getElementById('bookingForm').addEventListener('submit', (event) => {
-                event.preventDefault();
+                event.preventDefault(); // Prevent form submission
                 const name = document.getElementById('name').value;
                 const meal = document.querySelector('input[name="meal"]:checked')?.value || 'No prebooked meal';
                 const message = `**Booking Log**\nName: ${name}\nFlight Number: ${flightNumber}\nMeal: ${meal}`;
 
-                fetch('https://discord.com/api/webhooks/1277225983904055361/vv0EXJPSBIt7DEpSzxZ2Eowj0NU8f0OuL4JJKHsHEEMrl7ST4nkVJx6zk20ZWAILfSj-', {
+                // Send booking data to Discord webhook
+                fetch('https://discord.com/api/webhooks/YOUR-WEBHOOK-URL', {
                     method: 'POST',
                     body: JSON.stringify({ content: message }),
                     headers: { 'Content-Type': 'application/json' }
